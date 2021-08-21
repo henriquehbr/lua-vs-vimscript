@@ -32,12 +32,7 @@ echo "Running nvim with Vimscript (without plugins & headless mode)"
 vimscript_startup_time=$(run_test nvim --headless -u config.vim)
 
 echo "Running vim with vim9script (without plugins)"
-vim9script_startup_time=$(
-    run_test vim \
-        --not-a-term \
-        --clean \
-        -u config-vim9.vim
-)
+vim9script_startup_time=$(run_test vim --not-a-term --clean -u config-vim9.vim)
 
 echo "Running nvim with Lua (without plugins & headless mode)"
 lua_startup_time=$(run_test nvim --headless -u config.lua)
