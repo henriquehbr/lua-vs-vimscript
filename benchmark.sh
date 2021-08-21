@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Gets the last line from 'startuptime' log, which contains the timestamp (in ms)
-# of the overall time required to run nvim
+# Gets the last line from 'startuptime' log, which contains the
+# timestamp (in ms) of the overall time required to run nvim
 get_startup_time() {
     cat results.txt | tail -1 | cut -d " " -f 1
 }
