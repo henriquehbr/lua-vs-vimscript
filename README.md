@@ -2,6 +2,11 @@
 
 > a **real** argument to why you should use Lua instead vimscript
 
+## Requirements
+
+- Any shell (preferably bash or dash for running the script)
+- nvim 0.5+
+
 ## Running the benchmark
 
 To run the benchmark, simply run `./benchmark.sh`, the script is 100% POSIX-compliant, and tested against `dash` and `bash`
