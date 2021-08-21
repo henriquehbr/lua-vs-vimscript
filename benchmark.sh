@@ -6,12 +6,11 @@ get_startup_time() {
     cat results.txt | tail -1 | cut -d " " -f 1
 }
 
-# It's avoided to quote args because otherwise, they would be treated as a single option
-# causing a error
 nvim_args="--headless --noplugin --startuptime results.txt -c q"
 
 echo "Running nvim with Vimscript (without plugins & headless mode)"
 
+# args because otherwise they would be treated as a single option
 nvim $nvim_args -u config.vim
 
 vimscript_startup_time=$(get_startup_time)
