@@ -22,7 +22,14 @@ nvim $nvim_args -u config.lua
 
 lua_startup_time=$(get_startup_time)
 
+echo "Running vim with vim9script (without plugins)"
+
+vim --noplugin --clean -c ":q" --startuptime results.txt -u config-vim9.vim
+
+vim9script_startup_time=$(get_startup_time)
+
 rm -f results.txt
 
 echo "vimscript startup time: ${vimscript_startup_time}ms"
 echo "lua startup time: ${lua_startup_time}ms"
+echo "vim9script startup time: ${vim9script_startup_time}ms"

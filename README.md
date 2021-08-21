@@ -6,6 +6,7 @@
 
 - Any shell (preferably bash or dash for running the script)
 - nvim 0.5+
+- vim 8.0+
 
 ## Running the benchmark
 
