@@ -30,5 +30,5 @@ lua_startup_time=$(run_test nvim --headless -u config.lua)
 
 echo
 echo "vimscript startup time: ${vimscript_startup_time}ms"
-echo "lua startup time: ${lua_startup_time}ms"
 echo "vim9script startup time: ${vim9script_startup_time}ms"
+echo "lua startup time: ${lua_startup_time}ms"
