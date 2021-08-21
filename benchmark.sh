@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 # Gets the last line from 'startuptime' log, which contains the
 # timestamp (in ms) of the overall time required to run nvim
