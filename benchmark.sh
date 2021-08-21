@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 
 # Gets the last line from 'startuptime' log, which contains the
 # timestamp (in ms) of the overall time required to run nvim
@@ -10,8 +10,22 @@ run_test() {
     command=$@
     common_args="--noplugin --startuptime results.txt -c q"
 
-    $command $common_args
-    echo $(get_startup_time)
+    iterations=0
+    best_time=
+    worst_time=
+    while [ $iterations -le 2 ]; do
+        $command $common_args
+
+        startup_time="$(get_startup_time)"
+        if [ -z "$best_time" ] || [ "${startup_time%%.*}" -lt "${best_time%%.*}" ]; then
+            best_time="$startup_time"
+        elif [ -z "$worst_time" ] || [ "${startup_time%%.*}" -gt "${worst_time%%.*}" ]; then
+            worst_time="$startup_time"
+        fi
+
+        iterations=$(( iterations + 1 ))
+    done
+    echo "${worst_time}ms ± ${best_time}ms"
 }
 
 echo "Running nvim with Vimscript (without plugins & headless mode)"
@@ -29,6 +43,6 @@ echo "Running nvim with Lua (without plugins & headless mode)"
 lua_startup_time=$(run_test nvim --headless -u config.lua)
 
 echo
-echo "vimscript startup time: ${vimscript_startup_time}ms"
-echo "vim9script startup time: ${vim9script_startup_time}ms"
-echo "lua startup time: ${lua_startup_time}ms"
+echo "vimscript startup time: ${vimscript_startup_time}"
+echo "vim9script startup time: ${vim9script_startup_time}"
+echo "lua startup time: ${lua_startup_time}"

@@ -5,7 +5,7 @@
 ## Requirements
 
 - Any shell (preferably bash or dash for running the script)
-- nvim 0.5+
+- neovim 0.5+
 - vim 8.0+
 
 ## Running the benchmark
@@ -14,9 +14,9 @@ To run the benchmark, simply run `./benchmark.sh`, the script is 100% POSIX-comp
 
 ## About the tests
 
-In short, the way it works is by running to nvim twice, both instances on headless mode (to avoid clearing output) and without loading plugins, the results are retrieved with the built-in `--startuptime` nvim option
+In short, the way it works is by running 2 neovim instances on headless mode (to avoid clearing output) and 1 vim instance, both with plugins disabled, the results are retrieved with the built-in `--startuptime` option
 
-The test itself is a very simple loop that iterate 3 million times, it's implemented in both Vimscript and Lua, which in it's turn, is ran by the two spawned nvim instances (respectively)
+The test itself is a very simple loop that iterate 3 million times and it's executed 3 times, for gathering the best and the worst time from all the runs, it's implemented in vimscript, vim9script and Lua, which are executed by neovim (except by vim9script, which is executed on vim)
 
 ## Results
 
