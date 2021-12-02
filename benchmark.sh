@@ -28,16 +28,21 @@ run_test() {
     echo "${worst_time}ms ± ${best_time}ms"
 }
 
-echo "Running nvim with Vimscript (without plugins & headless mode)"
-vimscript_startup_time=$(run_test nvim --headless -u config.vim)
 
 echo "Running vim with vim9script (without plugins)"
 vim9script_startup_time=$(run_test vim --not-a-term --clean -u config-vim9.vim)
+
+echo "Running vim with Lua (without plugins)"
+vim_lua_startup_time=$(run_test vim --not-a-term --clean --cmd luafile./config.lua)
+
+echo "Running nvim with Vimscript (without plugins & headless mode)"
+vimscript_startup_time=$(run_test nvim --headless -u config.vim)
 
 echo "Running nvim with Lua (without plugins & headless mode)"
 lua_startup_time=$(run_test nvim --headless -u config.lua)
 
 echo
-echo "vimscript startup time: ${vimscript_startup_time}"
-echo "vim9script startup time: ${vim9script_startup_time}"
-echo "lua startup time: ${lua_startup_time}"
+echo "vim vim9script startup time: ${vim9script_startup_time}"
+echo "vim lua startup time: ${vim_lua_startup_time}"
+echo "nvim vimscript startup time: ${vimscript_startup_time}"
+echo "nvim lua startup time: ${lua_startup_time}"
