@@ -5,7 +5,7 @@
 ## Requirements
 
 - Any shell (preferably bash or dash for running the script)
-- neovim 0.5+
+- neovim 0.6+
 - vim 8.0+
 
 ## Running the benchmark
@@ -20,77 +20,71 @@ The test itself is a very simple loop that iterate 3 million times and it's exec
 
 ## Results
 
-> Last tested: 21/08
+> Last tested: 17/12/2021
 
 The results below represent the worst and best (respectively) of three runs of the vimscript, vim9script, and lua configs:
 
-- vimscript: 4965.140ms ± 4176.579ms
-- vim9script: 201.764ms ± 136.847ms
-- lua: 025.650ms ± 023.726ms
+- vimscript (nvim): 4085.615ms ± 4040.756ms
+- vim9script: 117.148ms ± 110.461ms
+- lua (vim): 027.592ms ± 027.881ms
+- lua (nvim): 012.506ms ± 012.445ms
 
 ### Technical information
 
 neovim version:
 
 ```
-NVIM v0.5.0
+NVIM v0.6.0
 Build type: Release
 LuaJIT 2.0.5
-Compilation: /usr/bin/cc -D_FORTIFY_SOURCE=2 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -U_FORTIFY_SOUR
--D_FORTIFY_SOURCE=1 -DNVIM_TS_HAS_SET_MATCH_LIMIT -O2 -DNDEBUG -Wall -Wextra -pedantic -Wno-unused-parameter
-strict-prototypes -std=gnu99 -Wshadow -Wconversion -Wmissing-prototypes -Wimplicit-fallthrough -Wvla -fstack
-otector-strong -fno-common -fdiagnostics-color=always -DINCLUDE_GENERATED_DECLARATIONS -D_GNU_SOURCE -DNVIM_
-PACK_HAS_FLOAT32 -DNVIM_UNIBI_HAS_VAR_FROM -DMIN_LOG_LEVEL=3 -I/build/neovim/src/neovim-0.5.0/build/config -
-uild/neovim/src/neovim-0.5.0/src -I/usr/include -I/build/neovim/src/neovim-0.5.0/build/src/nvim/auto -I/buil
-eovim/src/neovim-0.5.0/build/include
-Compiled by builduser
 ```
 
 vim version:
 
 ```
-VIM - Vi IMproved 8.2 (2019 Dec 12, compiled May 28 2021 06:58:52)
-Included patches: 1-2891
+VIM - Vi IMproved 8.2 (2019 Dec 12, compiled Dec 02 2021 19:44:33)
+Included patches: 1-3582, 3602
 Compiled by Arch Linux
 Huge version without GUI.  Features included (+) or not (-):
-+acl               -farsi             +mouse_sgr         +tag_binary
-+arabic            +file_in_path      -mouse_sysmouse    -tag_old_static
-+autocmd           +find_in_path      +mouse_urxvt       -tag_any_white
-+autochdir         +float             +mouse_xterm       +tcl/dyn
--autoservername    +folding           +multi_byte        +termguicolors
--balloon_eval      -footer            +multi_lang        +terminal
-+balloon_eval_term +fork()            -mzscheme          +terminfo
--browse            +gettext           +netbeans_intg     +termresponse
-++builtin_terms    -hangul_input      +num64             +textobjects
-+byte_offset       +iconv             +packages          +textprop
-+channel           +insert_expand     +path_extra        +timers
-+cindent           +ipv6              +perl/dyn          +title
--clientserver      +job               +persistent_undo   -toolbar
--clipboard         +jumplist          +popupwin          +user_commands
-+cmdline_compl     +keymap            +postscript        +vartabs
-+cmdline_hist      +lambda            +printer           +vertsplit
-+cmdline_info      +langmap           +profile           +virtualedit
-+comments          +libcall           +python/dyn        +visual
-+conceal           +linebreak         +python3/dyn       +visualextra
-+cryptv            +lispindent        +quickfix          +viminfo
-+cscope            +listcmds          +reltime           +vreplace
-+cursorbind        +localmap          +rightleft         +wildignore
-+cursorshape       +lua/dyn           +ruby/dyn          +wildmenu
-+dialog_con        +menu              +scrollbind        +windows
-+diff              +mksession         +signs             +writebackup
-+digraphs          +modify_fname      +smartindent       -X11
--dnd               +mouse             -sound             -xfontset
--ebcdic            -mouseshape        +spell             -xim
-+emacs_tags        +mouse_dec         +startuptime       -xpm
-+eval              +mouse_gpm         +statusline        -xsmp
-+ex_extra          -mouse_jsbterm     -sun_workshop      -xterm_clipboard
-+extra_search      +mouse_netterm     +syntax            -xterm_save
++acl               +file_in_path      +mouse_urxvt       -tag_any_white
++arabic            +find_in_path      +mouse_xterm       +tcl/dyn
++autocmd           +float             +multi_byte        +termguicolors
++autochdir         +folding           +multi_lang        +terminal
+-autoservername    -footer            -mzscheme          +terminfo
+-balloon_eval      +fork()            +netbeans_intg     +termresponse
++balloon_eval_term +gettext           +num64             +textobjects
+-browse            -hangul_input      +packages          +textprop
+++builtin_terms    +iconv             +path_extra        +timers
++byte_offset       +insert_expand     +perl/dyn          +title
++channel           +ipv6              +persistent_undo   -toolbar
++cindent           +job               +popupwin          +user_commands
+-clientserver      +jumplist          +postscript        +vartabs
+-clipboard         +keymap            +printer           +vertsplit
++cmdline_compl     +lambda            +profile           +virtualedit
++cmdline_hist      +langmap           +python/dyn        +visual
++cmdline_info      +libcall           +python3/dyn       +visualextra
++comments          +linebreak         +quickfix          +viminfo
++conceal           +lispindent        +reltime           +vreplace
++cryptv            +listcmds          +rightleft         +wildgnore
++cscope            +localmap          +ruby/dyn          +wildmenu
++cursorbind        +lua/dyn           +scrollbind        +windows
++cursorshape       +menu              +signs             +writebackup
++dialog_con        +mksession         +smartindent       -X11
++diff              +modify_fname      -sodium            -xfontset
++digraphs          +mouse             -sound             -xim
+-dnd               -mouseshape        +spell             -xpm
+-ebcdic            +mouse_dec         +startuptime       -xsmp
++emacs_tags        +mouse_gpm         +statusline        -xterm_clipboard
++eval              -mouse_jsbterm     -sun_workshop      -xterm_save
++ex_extra          +mouse_netterm     +syntax
++extra_search      +mouse_sgr         +tag_binary
+-farsi             -mouse_sysmouse    -tag_old_static
    system vimrc file: "/etc/vimrc"
      user vimrc file: "$HOME/.vimrc"
  2nd user vimrc file: "~/.vim/vimrc"
       user exrc file: "$HOME/.exrc"
        defaults file: "$VIMRUNTIME/defaults.vim"
   fall-back for $VIM: "/usr/share/vim"
-Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1
-Linking: gcc -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,-E -Wl,-rpath,/usr/lib/perl5/5.34/core_perl/CORE -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -L/usr/local/lib -o vim -lm -ltinfo -lelf -lacl -lattr -lgpm -ldl -Wl,-E -Wl,-rpath,/usr/lib/perl5/5.34/core_perl/CORE -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -L/usr/local/lib -L/usr/lib/perl5/5.34/core_perl/CORE -lperl -lpthread -ldl -lm -lcrypt -lutil -lc -L/usr/lib -ltclstub8.6 -ldl -lz -lpthread -lm
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -D_REENTRANT -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1
+Linking: gcc -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,-E -Wl,-rpath,/usr/lib/perl5/5.34/core_perl/CORE -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -L/usr/local/lib -o vim -lm -ltinfo -lelf -lacl -lattr -lgpm -ldl -Wl,-E -Wl,-rpath,/usr/lib/perl5/5.34/core_perl/CORE -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -L/usr/local/lib -L/usr/lib/perl5/5.34/core_perl/CORE -lperl -lpthread -ldl -lm -lcrypt -lutil -lc -L/usr/lib -ltclstub8.6 -ldl -lz -lpthread -lmi
 ```
