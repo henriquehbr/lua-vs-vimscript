@@ -14,9 +14,9 @@ To run the benchmark, simply run `./benchmark.sh`, the script is 100% POSIX-comp
 
 ## About the tests
 
-In short, the way it works is by running 2 neovim instances on headless mode (to avoid clearing output) and 1 vim instance, both with plugins disabled, the results are retrieved with the built-in `--startuptime` option
+In short, the way it works is by running 2 neovim instances on headless mode (to avoid clearing output) and 2 vim instances, both with plugins disabled, the results are retrieved with the built-in `--startuptime` option
 
-The test itself is a very simple loop that iterate 3 million times and it's executed 3 times, for gathering the best and the worst time from all the runs, it's implemented in vimscript, vim9script and Lua, which are executed by neovim (except by vim9script, which is executed on vim)
+The test itself is a very simple loop that iterate 3 million times and it's executed 3 times, for gathering the best and the worst time from all the runs, it's implemented in vimscript, vim9script and Lua, which are executed on both neovim and vim (except by vim9script, which is executed only on vim)
 
 ## Results
 
